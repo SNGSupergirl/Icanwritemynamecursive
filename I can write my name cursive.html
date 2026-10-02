@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Name Practice Worksheet</title>
+  <style>
+    @page {
+      size: letter portrait;
+      margin: 0.25in 0.35in;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      margin: 0;
+      padding: 16px;
+      background-color: #f1f5f9;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1e293b;
+    }
+
+    .no-print {
+      max-width: 760px;
+      margin: 0 auto 12px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .input-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .name-input {
+      padding: 6px 10px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 5px;
+      width: 130px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .name-input:focus {
+      border-color: #2563eb;
+    }
+
+    .btn-action {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1.5px solid #cbd5e1;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-action:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-print {
+      background: #1e3a8a;
+      color: #ffffff;
+      border: none;
+      padding: 7px 16px;
+      font-size: 13.5px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn-print:hover {
+      background: #172554;
+    }
+
+    .sheet {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 18px 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      border-radius: 4px;
+    }
+
+    .header-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+    }
+
+    .main-title {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      color: #1e3a8a;
+      margin: 0;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .sub-instructions {
+      font-size: 14px;
+      color: #475569;
+      margin: 4px 0 0 0;
+    }
+
+    .meta-fields {
+      text-align: right;
+      vertical-align: top;
+      font-size: 15px;
+      font-weight: bold;
+      color: #334155;
+      line-height: 2;
+      white-space: nowrap;
+    }
+
+    .underline {
+      display: inline-block;
+      width: 150px;
+      border-bottom: 1.8px solid #94a3b8;
+      margin-left: 6px;
+    }
+
+    .section-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f1f5f9;
+      border-left: 5px solid #2563eb;
+      padding: 4px 10px;
+      margin: 10px 0 4px 0;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+	
+	.second-title {
+	  font-size: 36px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      color: #1e3a8a;
+      margin: 0;
+	  text-align: center;
+      font-family: 'Rage', 'segoe print', 'bradley hand', cursive, sans-serif;
+      line-height: 0.6;
+	}
+
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      background: #e2e8f0;
+      padding: 3px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.3px;
+    }
+
+    /* Enlarged 126% SVG Rows */
+    .handwriting-svg {
+      width: 100%;
+      height: 68px; /* Scaled up from 58-60px */
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .txt-solid {
+      font-family: 'Rage', 'segoe print', 'bradley hand', cursive, sans-serif;
+      font-size: 50px;
+      font-weight: 700;
+      fill: #0f172a;
+    }
+
+    .txt-trace {
+      font-family: 'Rage', 'segoe print', 'bradley hand', cursive, sans-serif;
+      font-size: 50px;
+      font-weight: 400;
+      fill: transparent;
+      stroke: #94a3b8;
+      stroke-width: 1.3px;
+      stroke-linejoin: round;
+    }
+
+    .sheet-footer {
+      margin-top: 10px;
+      padding-top: 6px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: #94a3b8;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .sheet {
+        padding: 0;
+        box-shadow: none;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Live Control Bar -->
+  <div class="no-print">
+    <div class="input-group">
+      <label for="firstInput">First:</label>
+      <input type="text" id="firstInput" class="name-input" value="First" />
+      
+      <label for="lastInput">Last:</label>
+      <input type="text" id="lastInput" class="name-input" value="Last" />
+
+      <button type="button" class="btn-action" onclick="updateWorksheet()">Refresh</button>
+    </div>
+    <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <div class="sheet">
+    <!-- Header Block -->
+    <table class="header-table">
+      <tr>
+        <td>
+          <h1 class="main-title">⭐ I CAN WRITE MY NAME!  ✏️</h1>
+		  <h1 class="second-title">in cursive</h1>
+          <p class="sub-instructions"><strong>Cursive Tip:</strong> Keep your pencil on the paper from the start of a word to the end. All the letters in one word join together!</p>
+        </td>
+        <td class="meta-fields">
+          Name: <span class="underline"></span><br>
+          Date: <span class="underline"></span>
+        </td>
+      </tr>
+    </table>
+
+    <!-- PART 1 -->
+    <div class="section-bar">
+      <span class="section-title">PART 1: PRACTICE FIRST NAME &ldquo;<span id="headerFirst">FIRST</span>&rdquo;</span>
+      <span class="badge">TRACE &amp; COPY</span>
+    </div>
+    <svg id="rowP1A" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+    <svg id="rowP1B" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+
+    <!-- PART 2 -->
+    <div class="section-bar">
+      <span class="section-title">PART 2: PRACTICE LAST NAME &ldquo;<span id="headerLast">LAST</span>&rdquo;</span>
+      <span class="badge">TRACE &amp; COPY</span>
+    </div>
+    <svg id="rowP2A" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+    <svg id="rowP2B" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+
+    <!-- PART 3 -->
+    <div class="section-bar">
+      <span class="section-title">PART 3: FULL NAME &ldquo;<span id="headerFull">FIRST LAST</span>&rdquo;</span>
+      <span class="badge">FULL NAME FLUENCY</span>
+    </div>
+    <svg id="rowP3A" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+    <svg id="rowP3B" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+
+    <!-- PART 4 -->
+    <div class="section-bar">
+      <span class="section-title">PART 4: YOU CAN DO IT! WRITE ON YOUR OWN</span>
+      <span class="badge">&#9733; INDEPENDENT PRACTICE</span>
+	  
+    </div>
+	  <p class="sub-instructions">Start at the green dot and draw the letters carefully.</p>
+	
+    <svg id="rowP4A" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+    <svg id="rowP4B" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+    <svg id="rowP4C" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+    <svg id="rowP4D" class="handwriting-svg" viewBox="0 0 760 62"></svg>
+
+    <!-- Footer -->
+    <div class="sheet-footer">
+      <span><span id="footerFullName">Plan Provide Play</span> Handwriting Practice</span>
+      <span>Great effort! &#11088;</span>
+      <span>Page 1 of 1</span>
+    </div>
+  </div>
+
+  <script>
+    // Standard guideline template
+    const GUIDELINES = `
+      <line x1="0" y1="6" x2="760" y2="6" stroke="#60a5fa" stroke-width="1.8" />
+      <line x1="0" y1="26" x2="760" y2="26" stroke="#f59e0b" stroke-width="1.6" stroke-dasharray="6,4" />
+      <line x1="0" y1="46" x2="760" y2="46" stroke="#ef4444" stroke-width="1.8" />
+    `;
+
+    function buildSingleWordRow(svgId, wordText, isFirstRow) {
+      const svg = document.getElementById(svgId);
+      svg.innerHTML = GUIDELINES;
+
+      // Create a temporary measure node
+      const testText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      testText.setAttribute('y', '46');
+      testText.setAttribute('class', 'txt-solid');
+      testText.textContent = wordText;
+      svg.appendChild(testText);
+
+      let w = 0;
+      try {
+        w = testText.getBBox().width;
+      } catch (e) {
+        w = wordText.length * 21;
+      }
+      svg.removeChild(testText);
+
+      // Determine how many items fit comfortably without truncation
+      // 3 items fit if each item is <= 180px (roughly 5-6 chars max)
+      const count = (w * 3 + 80 <= 710) ? 3 : 2;
+      const leftMargin = 20;
+      const availableSpace = 730 - leftMargin;
+      const gap = (availableSpace - (w * count)) / (count);
+
+      let currentX = leftMargin;
+      for (let i = 0; i < count; i++) {
+        const textNode = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        textNode.setAttribute('x', currentX);
+        textNode.setAttribute('y', '46');
+        textNode.setAttribute('class', (isFirstRow && i === 0) ? 'txt-solid' : 'txt-trace');
+        textNode.textContent = wordText;
+        svg.appendChild(textNode);
+        currentX += w + gap;
+      }
+
+      // Made the green dot transparent for the top attempts
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        const dotX = Math.min(745, currentX - (gap * 0.45));
+        dot.setAttribute('cx', dotX);
+        dot.setAttribute('cy', '6');
+        dot.setAttribute('cy', '6');
+        dot.setAttribute('r', '4.5');
+        dot.setAttribute('fill', 'transparent');
+        svg.appendChild(dot);
+     }
+
+    function buildFullNameRow(svgId, fullName, isFirstRow) {
+      const svg = document.getElementById(svgId);
+      svg.innerHTML = GUIDELINES;
+
+      const testText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      testText.setAttribute('y', '46');
+      testText.setAttribute('class', 'txt-solid');
+      testText.textContent = fullName;
+      svg.appendChild(testText);
+
+      let w = 0;
+      try {
+        w = testText.getBBox().width;
+      } catch (e) {
+        w = fullName.length * 21;
+      }
+      svg.removeChild(testText);
+
+      // Fit two full names side-by-side; scale down font slightly if name is very long
+      let fontSize = 50;
+      if (w * 2 + 50 > 720) {
+        fontSize = Math.max(26, Math.floor(720 / (w * 2 + 50) * 50));
+        w = w * (fontSize / 50);
+      }
+
+      const leftMargin = 20;
+      const availableSpace = 730 - leftMargin;
+      const gap = Math.max(20, (availableSpace - (w * 2)) / 2);
+
+      let currentX = leftMargin;
+      for (let i = 0; i < 2; i++) {
+        const textNode = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        textNode.setAttribute('x', currentX);
+        textNode.setAttribute('y', '46');
+        textNode.setAttribute('class', (isFirstRow && i === 0) ? 'txt-solid' : 'txt-trace');
+        if (fontSize !== 40) {
+          textNode.style.fontSize = fontSize + 'px';
+        }
+        textNode.textContent = fullName;
+        svg.appendChild(textNode);
+        currentX += w + gap;
+      }
+    }
+
+    function buildIndependentRow(svgId, firstText) {
+      const svg = document.getElementById(svgId);
+      svg.innerHTML = GUIDELINES;
+
+      // Estimate where first name ends to place the second dot for the last name
+      const approxFirstWidth = Math.max(80, Math.min(220, firstText.length * 19));
+      const dot1X = 25;
+      const dot2X = dot1X + approxFirstWidth + 25;
+
+      const dot1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot1.setAttribute('cx', dot1X);
+      dot1.setAttribute('cy', '6');
+      dot1.setAttribute('r', '4.5');
+      dot1.setAttribute('fill', '#16a34a');
+      svg.appendChild(dot1);
+
+      const dot2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot2.setAttribute('cx', dot2X);
+      dot2.setAttribute('cy', '6');
+      dot2.setAttribute('r', '4.5');
+      dot2.setAttribute('fill', '#16a34a');
+      svg.appendChild(dot2);
+    }
+
+    function updateWorksheet() {
+      const first = document.getElementById('firstInput').value.trim() || 'First';
+      const last = document.getElementById('lastInput').value.trim() || 'Last';
+      const full = `${first} ${last}`.trim();
+
+      // Headers & Footer text
+      document.getElementById('headerFirst').textContent = first.toUpperCase();
+      document.getElementById('headerLast').textContent = last.toUpperCase();
+      document.getElementById('headerFull').textContent = full.toUpperCase();
+      document.getElementById('footerFullName').textContent = 'Plan Provide Play     •';
+
+      // Part 1: First Name
+      buildSingleWordRow('rowP1A', first, true);
+      buildSingleWordRow('rowP1B', first, false);
+
+      // Part 2: Last Name
+      buildSingleWordRow('rowP2A', last, true);
+      buildSingleWordRow('rowP2B', last, false);
+
+      // Part 3: Full Name
+      buildFullNameRow('rowP3A', full, true);
+      buildFullNameRow('rowP3B', full, false);
+
+      // Part 4: Independent Lines (Dots positioned proportionally)
+      buildIndependentRow('rowP4A', first);
+      buildIndependentRow('rowP4B', first);
+      buildIndependentRow('rowP4C', first);
+      buildIndependentRow('rowP4D', first);
+    }
+
+    document.getElementById('firstInput').addEventListener('input', updateWorksheet);
+    document.getElementById('lastInput').addEventListener('input', updateWorksheet);
+
+    window.addEventListener('DOMContentLoaded', updateWorksheet);
+    window.addEventListener('load', updateWorksheet);
+  </script>
+</body>
+</html>
